@@ -97,5 +97,5 @@ def SBA_Loan_predict():
 if __name__ == '__main__':
     
     
-    klasifikasi = joblib.load('putripickle')
+    klasifikasi = joblib.load('putripickle.pkl')
     app.run(debug=True, port=4000)
