@@ -41,7 +41,7 @@ PyYAML==6.0
 scikit-learn 
 scipy 
 seaborn 
-sip==4.19.13
+sip
 six 
 tenacity 
 threadpoolctl 
