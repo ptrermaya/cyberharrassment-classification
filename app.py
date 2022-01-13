@@ -1,17 +1,17 @@
 from flask import Flask, render_template, request
 import numpy as np
 import pandas as pd
-import seaborn as sb
-import plotly
-import plotly.graph_objs as go
+# import seaborn as sb
+# import plotly
+# import plotly.graph_objs as go
 # Data dari flask di kirim ke browser dalam bentuk json
-import json
+# import json
 import joblib
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-import dash_table
-from dash.dependencies import Input, Output, State
+# import dash
+# import dash_core_components as dcc
+# import dash_html_components as html
+# import dash_table
+# from dash.dependencies import Input, Output, State
 
 app = Flask(__name__)
 
@@ -97,5 +97,5 @@ def SBA_Loan_predict():
 if __name__ == '__main__':
     
     
-    klasifikasi = joblib.load('putripickle')
+    klasifikasi = joblib.load('putripickle.pkl')
     app.run(debug=True, port=4000)
