@@ -25,6 +25,6 @@ scikit-learn
 scipy 
 six 
 threadpoolctl 
-#virtualenv==20.9.0
+virtualenv==20.9.0
 Werkzeug 
 wincertstore==0.2
