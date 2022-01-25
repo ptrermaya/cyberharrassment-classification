@@ -1,5 +1,5 @@
-flask
+Flask
 gunicorn
 scikit-learn
-plotly
-dash
+numpy
+pandas
