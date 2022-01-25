@@ -1,17 +1,7 @@
 from flask import Flask, render_template, request
 import numpy as np
 import pandas as pd
-import seaborn as sb
-import plotly
-import plotly.graph_objs as go
-# Data dari flask di kirim ke browser dalam bentuk json
-import json
-import joblib
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-import dash_table
-from dash.dependencies import Input, Output, State
+import pickle
 
 app = Flask(__name__)
 
@@ -26,11 +16,6 @@ def home():
 @app.route('/static/<path:x>')
 def gal(x):
     return send_from_directory("static",x)
-
-# Render About page
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 # Prediction Page
 @app.route('/predict')
@@ -86,9 +71,11 @@ def SBA_Loan_predict():
         twitter = preprocess(input['twitter'])
 
 # Term, NewExist, GrAppv, SBA_Appv, RevLineCr, Lowdoc, NAICS_11
+        model_file = open('putripickle.pkl', 'rb')
+        klasifikasi = pickle.load(model_file, encoding='bytes')
         pred = klasifikasi.predict([twitter])
         proba = klasifikasi.predict_proba([twitter])
-        pred_and_proba = f"{round(np.max(proba)*100,2)}% {pred[0]}"
+        pred_and_proba = f"{round(np.max(proba),2)} {pred[0]}"
 
 
         return render_template('result.html',
@@ -97,5 +84,4 @@ def SBA_Loan_predict():
 if __name__ == '__main__':
     
     
-    klasifikasi = joblib.load('putripickle')
-    app.run(debug=True, port=4000)
+    app.run(debug=True,port=5000)
